@@ -1,0 +1,244 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* ── Typography ── */
+    --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+    --font-mono: 'JetBrains Mono', 'Roboto Mono', ui-monospace, monospace;
+
+    /* ── Industrial Palette (Light Mode Only) ── */
+    --background: 216 15% 88%;       /* #e0e5ec — Chassis grey */
+    --foreground: 184 10% 20%;       /* #2d3436 — Charcoal text */
+
+    --card: 216 15% 88%;             /* Same as chassis — cards lift via shadow */
+    --card-foreground: 184 10% 20%;
+
+    --popover: 216 20% 94%;          /* #f0f2f5 — Panel surface */
+    --popover-foreground: 184 10% 20%;
+
+    --primary: 354 100% 64%;         /* #ff4757 — Safety Red / Accent */
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 184 10% 20%;        /* #2d3436 — Dark charcoal */
+    --secondary-foreground: 216 15% 88%;
+
+    --muted: 216 15% 82%;            /* #d1d9e6 — Recessed grey */
+    --muted-foreground: 215 10% 33%; /* #4a5568 — WCAG AA label grey */
+
+    --accent: 354 100% 64%;          /* Same as primary for interactive */
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 216 10% 73%;           /* #babecc — Shadow color */
+    --border-light: 0 0% 100%;       /* #ffffff — Highlight color */
+    --border-dark: 213 12% 67%;      /* #a3b1c6 — Deep shadow */
+    --input: 216 10% 73%;
+    --ring: 354 100% 64%;
+
+    --radius: 0.5rem;
+
+    /* ── Neumorphic Shadow System ── */
+    --shadow-card: 8px 8px 16px #babecc, -8px -8px 16px #ffffff;
+    --shadow-floating: 12px 12px 24px #babecc, -12px -12px 24px #ffffff, inset 1px 1px 0 rgba(255,255,255,0.5);
+    --shadow-pressed: inset 6px 6px 12px #babecc, inset -6px -6px 12px #ffffff;
+    --shadow-recessed: inset 4px 4px 8px #babecc, inset -4px -4px 8px #ffffff;
+    --shadow-sharp: 4px 4px 8px rgba(0,0,0,0.15), -1px -1px 1px rgba(255,255,255,0.8);
+    --shadow-glow: 0 0 10px 2px rgba(255, 71, 87, 0.6);
+    --shadow-glow-green: 0 0 10px 2px rgba(34, 197, 94, 0.6);
+
+    /* ── Feedback category colors (functional — preserved) ── */
+    --cat-positive: 158 68% 37%;
+    --cat-positive-bg: 158 50% 93%;
+    --cat-positive-text: 163 78% 17%;
+
+    --cat-negative: 17 68% 52%;
+    --cat-negative-bg: 17 68% 95%;
+    --cat-negative-text: 17 56% 26%;
+
+    --cat-complaint: 1 72% 58%;
+    --cat-complaint-bg: 1 72% 96%;
+    --cat-complaint-text: 1 58% 30%;
+
+    --cat-suggestion: 210 63% 54%;
+    --cat-suggestion-bg: 210 63% 95%;
+    --cat-suggestion-text: 210 78% 27%;
+
+    --cat-product: 37 78% 41%;
+    --cat-product-bg: 37 78% 94%;
+    --cat-product-text: 37 78% 14%;
+
+    --cat-service: 248 38% 52%;
+    --cat-service-bg: 248 38% 96%;
+    --cat-service-text: 248 38% 24%;
+
+    /* ── Status colors ── */
+    --status-open: 37 78% 41%;
+    --status-open-bg: 40 90% 93%;
+    --status-progress: 210 63% 37%;
+    --status-progress-bg: 210 63% 95%;
+    --status-resolved: 158 68% 37%;
+    --status-resolved-bg: 158 50% 93%;
+
+    /* ── Sidebar (dark technical panel) ── */
+    --sidebar-background: 184 10% 20%;
+    --sidebar-foreground: 216 15% 88%;
+    --sidebar-primary: 354 100% 64%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 200 10% 30%;
+    --sidebar-accent-foreground: 216 15% 88%;
+    --sidebar-border: 200 10% 28%;
+    --sidebar-ring: 354 100% 64%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    position: relative;
+  }
+
+  /* Noise texture overlay — simulates matte plastic micro-texture */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    pointer-events: none;
+    opacity: 0.035;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 256px 256px;
+  }
+}
+
+@layer utilities {
+  /* ── Neumorphic shadow utilities ── */
+  .shadow-neu-card {
+    box-shadow: var(--shadow-card);
+  }
+  .shadow-neu-floating {
+    box-shadow: var(--shadow-floating);
+  }
+  .shadow-neu-pressed {
+    box-shadow: var(--shadow-pressed);
+  }
+  .shadow-neu-recessed {
+    box-shadow: var(--shadow-recessed);
+  }
+  .shadow-neu-sharp {
+    box-shadow: var(--shadow-sharp);
+  }
+  .shadow-neu-glow {
+    box-shadow: var(--shadow-glow);
+  }
+  .shadow-neu-glow-green {
+    box-shadow: var(--shadow-glow-green);
+  }
+
+  /* ── Manufacturing detail: corner screws ── */
+  .neu-screws {
+    background-image:
+      radial-gradient(circle at 12px 12px, rgba(0,0,0,0.15) 2px, transparent 3px),
+      radial-gradient(circle at calc(100% - 12px) 12px, rgba(0,0,0,0.15) 2px, transparent 3px),
+      radial-gradient(circle at 12px calc(100% - 12px), rgba(0,0,0,0.15) 2px, transparent 3px),
+      radial-gradient(circle at calc(100% - 12px) calc(100% - 12px), rgba(0,0,0,0.15) 2px, transparent 3px);
+  }
+
+  /* ── CRT scanline overlay ── */
+  .scanlines {
+    background-image: linear-gradient(rgba(18,16,16,0) 50%, rgba(0,0,0,0.15) 50%);
+    background-size: 100% 4px;
+  }
+
+  /* ── Animation utilities ── */
+  .animate-fade-in {
+    animation: fadeIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+  .animate-slide-up {
+    animation: slideUp 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+
+  /* ── Mechanical easing for interactive elements ── */
+  .transition-mechanical {
+    transition: all 300ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+  .transition-press {
+    transition: all 150ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+}
+
+/* ── Keyframes ── */
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.97); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes ledPulse {
+  0%, 100% { opacity: 1; box-shadow: 0 0 6px 1px currentColor; }
+  50% { opacity: 0.6; box-shadow: 0 0 3px 0px currentColor; }
+}
+
+/* ── Spinner (industrial version) ── */
+.spinner {
+  width: 18px;
+  height: 18px;
+  border: 2.5px solid hsl(var(--muted));
+  border-top-color: hsl(var(--primary));
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  display: inline-block;
+}
+
+/* ── LED indicator ── */
+.led {
+  display: inline-block;
+  border-radius: 9999px;
+  animation: ledPulse 2s ease-in-out infinite;
+}
+.led-green {
+  background-color: #22c55e;
+  color: #22c55e;
+}
+.led-red {
+  background-color: #ff4757;
+  color: #ff4757;
+}
+.led-yellow {
+  background-color: #eab308;
+  color: #eab308;
+}
+
+/* ── Vent slot ── */
+.vent-slot {
+  width: 2px;
+  height: 20px;
+  border-radius: 9999px;
+  background: hsl(var(--muted));
+  box-shadow: inset 1px 1px 2px rgba(0,0,0,0.15);
+}
+
+/* ── Groove divider ── */
+.groove {
+  height: 3px;
+  border-radius: 9999px;
+  box-shadow: var(--shadow-recessed);
+  background: hsl(var(--background));
+}
