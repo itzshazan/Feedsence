@@ -53,10 +53,19 @@ export default function Portal() {
         }
 
         .left-nav {
-          font-weight: 700;
-          font-size: 14px;
+          font-weight: 800;
+          font-size: 22px;
+          letter-spacing: 0.05em;
+          display: flex;
+          align-items: center;
+          line-height: 1;
         }
-        @media (min-width: 768px) { .left-nav { font-size: 18px; } }
+        @media (min-width: 768px) { 
+          .left-nav { 
+            font-size: 30px; 
+            letter-spacing: 0.06em;
+          } 
+        }
         
         .left-nav span {
           color: #ff4d4d;
