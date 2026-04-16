@@ -181,11 +181,11 @@ export default function CustomerDashboard() {
   const profileName = `${profile.first_name} ${profile.last_name}`;
 
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen relative overflow-hidden">
       <TopNav profileName={profileName} />
-      <div className="flex-1 overflow-y-auto p-6">
+      <div className="flex-1 overflow-y-auto p-4 lg:p-5 lg:pb-0">
         {/* Tab switcher — recessed groove */}
-        <div className="max-w-[700px] mx-auto mb-5">
+        <div className="max-w-[700px] mx-auto mb-3 lg:mb-4 w-full flex justify-center mt-1">
           <div className="shadow-neu-recessed rounded-lg p-1.5 flex gap-1 inline-flex">
             {(['submit', 'history'] as const).map(t => (
               <button key={t} onClick={() => setTab(t)}
@@ -201,7 +201,7 @@ export default function CustomerDashboard() {
         </div>
 
         {tab === 'submit' && !showSuccess && (
-          <div className="shadow-neu-card neu-screws rounded-xl p-6 max-w-[700px] mx-auto bg-background animate-slide-up flex flex-col gap-4 relative">
+          <div className="shadow-neu-card neu-screws rounded-xl p-5 lg:p-6 max-w-[700px] mx-auto bg-background animate-slide-up flex flex-col gap-3 relative">
 
             {/* Vent slots */}
             <div className="absolute top-5 right-8 flex gap-1">
@@ -231,19 +231,19 @@ export default function CustomerDashboard() {
 
             {/* Product category */}
             <div>
-              <div className="font-mono text-[9px] font-bold text-muted-foreground uppercase tracking-widest mb-2.5">
+              <div className="font-mono text-[9px] font-bold text-muted-foreground uppercase tracking-widest mb-1.5">
                 Product Category *
               </div>
               <div className="grid grid-cols-3 gap-2">
                 {PRODUCT_CATEGORIES.map(p => (
                   <button key={p.cat} onClick={() => setSelectedProdCat(p.cat)}
-                    className={`flex items-center gap-2 p-3 rounded-md text-xs text-left transition-mechanical ${
+                    className={`flex items-center gap-2 p-2 px-3 rounded-md text-xs text-left transition-mechanical ${
                       selectedProdCat === p.cat
                         ? 'shadow-neu-pressed bg-background font-bold text-primary'
                         : 'shadow-neu-card bg-background hover:-translate-y-0.5 hover:shadow-neu-floating'
                     }`}>
-                    <div className={`w-7 h-7 rounded-full shadow-neu-recessed flex items-center justify-center text-sm shrink-0 ${p.bgClass}`}>{p.icon}</div>
-                    <span className="font-semibold text-foreground text-[11px]">{p.cat}</span>
+                    <div className={`w-6 h-6 rounded-full shadow-neu-recessed flex items-center justify-center text-[12px] shrink-0 ${p.bgClass}`}>{p.icon}</div>
+                    <span className="font-semibold text-foreground text-[10px] sm:text-[11px] leading-tight">{p.cat}</span>
                   </button>
                 ))}
               </div>
@@ -251,9 +251,9 @@ export default function CustomerDashboard() {
 
             {/* Feedback message */}
             <div>
-              <label className="font-mono text-[9px] font-bold text-muted-foreground uppercase tracking-widest block mb-2">Your Feedback *</label>
+              <label className="font-mono text-[9px] font-bold text-muted-foreground uppercase tracking-widest block mb-1.5">Your Feedback *</label>
               <textarea value={message} onChange={e => setMessage(e.target.value)}
-                className="flex min-h-[100px] w-full rounded-md border-none bg-background px-4 py-3 font-mono text-sm shadow-neu-recessed placeholder:text-muted-foreground/50 focus-visible:outline-none focus-visible:shadow-[inset_4px_4px_8px_#babecc,inset_-4px_-4px_8px_#ffffff,0_0_0_2px_hsl(var(--primary))] resize-y leading-relaxed"
+                className="flex min-h-[70px] sm:min-h-[80px] w-full rounded-md border-none bg-background px-4 py-2.5 font-mono text-sm shadow-neu-recessed placeholder:text-muted-foreground/50 focus-visible:outline-none focus-visible:shadow-[inset_4px_4px_8px_#babecc,inset_-4px_-4px_8px_#ffffff,0_0_0_2px_hsl(var(--primary))] resize-y leading-relaxed"
                 placeholder="Describe your experience, issue, or suggestion…" />
             </div>
 
