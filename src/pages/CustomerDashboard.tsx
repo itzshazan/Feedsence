@@ -181,9 +181,9 @@ export default function CustomerDashboard() {
   const profileName = `${profile.first_name} ${profile.last_name}`;
 
   return (
-    <div className="flex flex-col min-h-screen relative overflow-hidden">
+    <div className="main-page flex flex-col relative">
       <TopNav profileName={profileName} />
-      <div className="flex-1 overflow-y-auto p-4 lg:p-5 lg:pb-0">
+      <div className="flex-1 p-4 lg:p-5 lg:pb-0">
         {/* Tab switcher — recessed groove */}
         <div className="max-w-[700px] mx-auto mb-3 lg:mb-4 w-full flex justify-center mt-1">
           <div className="shadow-neu-recessed rounded-lg p-1.5 flex gap-1 inline-flex">

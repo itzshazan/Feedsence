@@ -119,7 +119,7 @@ export default function AdminDashboard() {
   ];
 
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="main-page flex flex-col relative">
       <TopNav profileName={profile.name} badgeLabel={category} />
       <div className="flex-1 flex flex-col md:flex-row overflow-hidden">
 

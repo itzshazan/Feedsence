@@ -7,6 +7,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { ADMIN_EMAILS_BY_CATEGORY, CAT_CONFIG, FEEDBACK_CATEGORIES, type FeedbackCategory } from '@/lib/constants';
 import { toast } from 'sonner';
+import { Eye, EyeOff } from 'lucide-react';
 
 export default function AdminAuth() {
   const navigate = useNavigate();
@@ -22,6 +23,7 @@ export default function AdminAuth() {
   const [lEmail, setLEmail] = useState('');
   const [lPass, setLPass] = useState('');
   const [lErr, setLErr] = useState('');
+  const [showLPass, setShowLPass] = useState(false);
 
   const doLogin = async () => {
     setLErr('');
@@ -117,7 +119,12 @@ export default function AdminAuth() {
             </div>
             <div>
               <Label className="mb-2 block">Password</Label>
-              <Input value={lPass} onChange={e => setLPass(e.target.value)} type="password" placeholder="••••••••" onKeyDown={e => e.key === 'Enter' && doLogin()} />
+              <div className="relative w-full">
+                <Input value={lPass} onChange={e => setLPass(e.target.value)} type={showLPass ? "text" : "password"} placeholder="••••••••" className="pr-10" onKeyDown={e => e.key === 'Enter' && doLogin()} />
+                <button type="button" onClick={() => setShowLPass(!showLPass)} className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground opacity-60 hover:opacity-100 transition-opacity focus:outline-none" aria-label="Toggle password visibility">
+                  {showLPass ? <EyeOff size={16} /> : <Eye size={16} />}
+                </button>
+              </div>
             </div>
             {lErr && (
               <div className="flex items-center gap-2 text-xs text-destructive bg-destructive/10 shadow-neu-recessed rounded-md p-3">
