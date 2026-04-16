@@ -1,3 +1,3 @@
-# Welcome to your FeedSense project
+# Welcome to your FeedSense
 
 
