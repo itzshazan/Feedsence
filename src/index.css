@@ -100,6 +100,11 @@
     @apply border-border;
   }
 
+  html, body {
+    height: 100%;
+    /* overflow control moved to page-level wrappers */
+  }
+
   body {
     @apply bg-background text-foreground font-sans antialiased;
     position: relative;
@@ -174,7 +179,29 @@
   .transition-press {
     transition: all 150ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
   }
+
+  /* ── Hide Scrollbar utilities ── */
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .hide-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+
+  /* ── Page Layout Wrappers Default Scroll Strategy ── */
+  .auth-page {
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  .main-page {
+    height: 100vh;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+  }
 }
+
 
 /* ── Keyframes ── */
 @keyframes fadeIn {
