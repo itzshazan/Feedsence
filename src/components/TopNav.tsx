@@ -26,11 +26,9 @@ export default function TopNav({ profileName, badgeLabel }: TopNavProps) {
       {/* Brand: FeedSense */}
       <button
         onClick={() => navigate('/')}
-        className="flex items-center gap-2 group"
+        className="flex items-center group logo-wrapper"
       >
-        <span className="text-xl font-extrabold tracking-tight text-white leading-none drop-shadow-[0_2px_4px_rgba(0,0,0,0.3)]">
-          FEED<span className="text-primary">SENSE</span>
-        </span>
+        <img src="/logo-transparent.png" alt="FeedSense Logo" className="logo-img" />
       </button>
 
       <div className="w-px h-7 bg-white/10" />

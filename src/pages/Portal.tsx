@@ -198,8 +198,8 @@ export default function Portal() {
       `}</style>
       
       <header className="topbar !transition-opacity !duration-700" style={{ opacity: mounted ? 1 : 0 }}>
-        <div className="left-nav">
-          FEED<span>SENSE</span>
+        <div className="logo-wrapper">
+          <img src="/logo-transparent.png" alt="FeedSense Logo" className="logo-img" />
         </div>
         <div className="center-nav">
           <span className="dot"></span>
