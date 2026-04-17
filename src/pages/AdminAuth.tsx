@@ -81,9 +81,9 @@ export default function AdminAuth() {
           </div>
 
           {/* Header */}
-          <div className="text-center mb-6">
-            <div className="text-2xl font-extrabold tracking-tight">
-              FEED<span className="text-primary">SENSE</span>
+          <div className="text-center mb-6 flex flex-col items-center">
+            <div className="logo-wrapper mb-4">
+              <img src="/logo-transparent.png" alt="FeedSense Logo" className="logo-img" />
             </div>
             <div className="flex items-center justify-center gap-2 mt-2">
               <span className={`w-2 h-2 rounded-full ${cfg?.colorClass}`} />

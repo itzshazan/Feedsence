@@ -188,9 +188,9 @@ export default function CustomerAuth() {
           </div>
 
           {/* Header */}
-          <div className="text-center mb-4">
-            <div className="text-2xl font-extrabold tracking-tight my-[4px]">
-              FEED<span className="text-primary">SENSE</span>
+          <div className="text-center mb-4 flex flex-col items-center">
+            <div className="logo-wrapper mb-4">
+              <img src="/logo-transparent.png" alt="FeedSense Logo" className="logo-img" />
             </div>
             <div className="text-sm font-bold text-foreground my-[4px]">Customer Portal</div>
             <div className="font-mono text-[9px] text-muted-foreground uppercase tracking-widest my-[4px]">

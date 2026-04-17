@@ -200,6 +200,28 @@
     overflow-y: auto;
     scroll-behavior: smooth;
   }
+
+  /* ── Logo ── */
+  .logo-wrapper {
+    width: 42px;
+    height: 42px;
+
+    background-color: #ff4d5a;
+    border-radius: 12px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(255, 77, 90, 0.25);
+  }
+
+  .logo-img {
+    width: 30px;
+    height: auto;
+    object-fit: contain;
+  }
 }
 
 
