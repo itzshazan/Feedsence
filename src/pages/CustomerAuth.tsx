@@ -7,6 +7,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { toast } from 'sonner';
 import { Eye, EyeOff } from 'lucide-react';
+import { ADMIN_EMAILS_BY_CATEGORY } from '@/lib/constants';
 
 export default function CustomerAuth() {
   const navigate = useNavigate();
@@ -36,6 +37,14 @@ export default function CustomerAuth() {
   const doLogin = async () => {
     setLErr('');
     if (!lEmail || !lPass) { setLErr('Please enter your email and password.'); return; }
+
+    const normalizedEmail = lEmail.trim().toLowerCase();
+    const allAdminEmails = Object.values(ADMIN_EMAILS_BY_CATEGORY).flat().map(e => e.toLowerCase());
+    if (allAdminEmails.includes(normalizedEmail)) {
+      setLErr('Admin accounts cannot be used in the customer portal.');
+      return;
+    }
+
     setLoading(true);
     try {
       const { data, error } = await supabase.auth.signInWithPassword({ email: lEmail, password: lPass });
@@ -96,6 +105,14 @@ export default function CustomerAuth() {
   const doSignup = async () => {
     setSErr('');
     if (!sFname || !sLname || !sEmail || !sAge || !sGender || !sPass || !sPass2) { setSErr('Please fill in all fields.'); return; }
+
+    const normalizedEmail = sEmail.trim().toLowerCase();
+    const allAdminEmails = Object.values(ADMIN_EMAILS_BY_CATEGORY).flat().map(e => e.toLowerCase());
+    if (allAdminEmails.includes(normalizedEmail)) {
+      setSErr('Admin accounts cannot be used to create customer profiles.');
+      return;
+    }
+
     if (sPass.length < 6) { setSErr('Password must be at least 6 characters.'); return; }
     if (sPass !== sPass2) { setSErr('Passwords do not match.'); return; }
     const parsedAge = Number.parseInt(sAge, 10);
